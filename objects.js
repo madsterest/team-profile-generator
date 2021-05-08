@@ -19,79 +19,87 @@ function renderHtml(array) {
         </div>
       </nav>
       <div class="container-fluid">
-        <div class="row mx-4 row-cols-1 row-cols-md-2 row-cols-lg-3"></div>
-             ${generateCards(array)}
+        <div class="row mx-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
+        ${generateCards(array)}
+        </div>  
       </div>
     </body>
   </html>`;
 }
-testArray = [{ name: "Dave", id: "50", email: "dave@example.com" }];
+let render = [];
 function generateCards(array) {
   for (var i = 0; i < array.length; i++) {
-    if (array[i].officeNumber) {
-      renderManagerCard(array[i]);
-    } else if (array[i].github) {
-      renderEngineerCard(array[i]);
-    } else if (array[i].school) {
-      renderInternCard(array[i]);
+    let object = array[i];
+    if (object.officeNumber) {
+      render.push(renderManagerCard(object));
+    } else if (object.github) {
+      render.push(renderEngineerCard(object));
+    } else if (object.school) {
+      render.push(renderInternCard(object));
     } else {
-      renderEmployeeCard(array[i]);
+      render.push(renderEmployeeCard(object));
     }
   }
+  return render.join("");
 }
 
 function renderEmployeeCard(array) {
-  return `<div class="col">
-  <div class="card mb-3">
-    <div class="card-header text-white bg-primary">${array.name}: Employee</div>
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">${array.id}</li>
-        <li class="list-group-item">${array.email}</li>
-      </ul>
-    </div>
-  </div>
-</div>`;
+  return `
+        <div class="col">
+        <div class="card mb-3">
+          <div class="card-header text-white bg-primary">${array.name} <br>Employee</div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">${array.id}</li>
+              <li class="list-group-item"><a href="mailto: ${array.email}">${array.email}</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>`;
 }
 function renderManagerCard(array) {
-  return `<div class="col">
-  <div class="card mb-3">
-    <div class="card-header text-white bg-primary">${array.name}: Manager</div>
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">${array.id}</li>
-        <li class="list-group-item">${array.email}</li>
-        <li class="list-group-item">${array.officeNumber}</li>
-      </ul>
-    </div>
-  </div>
-</div>`;
+  return `
+        <div class="col">
+        <div class="card mb-3">
+          <div class="card-header text-white bg-primary">${array.name}<br>Manager</div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">${array.id}</li>
+              <li class="list-group-item"><a href="mailto: ${array.email}">${array.email}</a></li>
+              <li class="list-group-item">${array.officeNumber}</li>
+            </ul>
+          </div>
+        </div>
+      </div>`;
 }
 function renderEngineerCard(array) {
-  return `<div class="col">
-  <div class="card mb-3">
-    <div class="card-header text-white bg-primary">${array.name}: Engineer</div>
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">${array.id}</li>
-        <li class="list-group-item">${array.email}</li>
-        <li class="list-group-item">${array.github}</li>
-      </ul>
-    </div>
-  </div>
-</div>`;
+  return `
+        <div class="col">
+        <div class="card mb-3">
+          <div class="card-header text-white bg-primary">${array.name}<br> Engineer</div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">${array.id}</li>
+              <li class="list-group-item"><a href="mailto: ${array.email}">${array.email}</a></li>
+              <li class="list-group-item"><a href="https://github.com/${array.github}">${array.github}</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>`;
 }
+
 function renderInternCard(array) {
-  return `<div class="col">
-  <div class="card mb-3">
-    <div class="card-header text-white bg-primary">${array.name}: Intern</div>
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">${array.id}</li>
-        <li class="list-group-item">${array.email}</li>
-        <li class="list-group-item">${array.school}</li>
-      </ul>
-    </div>
-  </div>
-</div>`;
+  return `
+        <div class="col">
+        <div class="card mb-3">
+          <div class="card-header text-white bg-primary">${array.name}<br>Intern</div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">${array.id}</li>
+              <li class="list-group-item"><a href="mailto: ${array.email}">${array.email}</a></li>
+              <li class="list-group-item">${array.school}</li>
+            </ul>
+          </div>
+        </div>
+      </div>`;
 }

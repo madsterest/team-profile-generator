@@ -74,7 +74,9 @@ function newEmployee(questions) {
           } else {
             //Once it has stopped running, create a function that renders the info from the employee array.
             let finalRender = render.renderHtml(employee);
-            console.log(finalRender);
+            fs.writeFile("index.html", finalRender, (err) => {
+              if (err) return console.log(err);
+            });
           }
         });
     });
@@ -144,7 +146,6 @@ class Intern extends Employee {
 function createNewObj(data) {
   if (data.employType === "Employee") {
     employee.push(new Employee(data.name, data.id, data.email));
-    console.log(employee);
   } else if (data.employType === "Manager") {
     employee.push(new Manager(data.name, data.id, data.email, data.office));
   } else if (data.employType === "Engineer") {
