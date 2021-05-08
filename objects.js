@@ -1,3 +1,5 @@
+
+
 class Employee {
   constructor(name, id, email) {
     this.name = name;
@@ -64,3 +66,4 @@ function createNewObj(employ, data) {
     new Employee(data.name, data.id, data.email);
   }
 }
+

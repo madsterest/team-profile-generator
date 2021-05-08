@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
+
 let employee = [];
 newEmployee();
 //connect to objects.js (export and require)
