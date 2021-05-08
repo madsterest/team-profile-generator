@@ -1,69 +1,97 @@
+module.exports.renderHtml = renderHtml;
 
-
-class Employee {
-  constructor(name, id, email) {
-    this.name = name;
-    this.id = id;
-    this.email = email;
-  }
-  getName() {
-    return this.name;
-  }
-  getId() {
-    return this.id;
-  }
-  getEmail() {
-    return this.email;
-  }
-  getRole() {
-    return "Employee";
+function renderHtml(array) {
+  return `<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+      />
+      <title>Document</title>
+    </head>
+    <body>
+      <nav class="navbar text-white bg-danger mb-4">
+        <div class="container-fluid justify-content-center p-4">
+          <span class="navbar-brand mb-0 h1">My Team</span>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <div class="row mx-4 row-cols-1 row-cols-md-2 row-cols-lg-3"></div>
+             ${generateCards(array)}
+      </div>
+    </body>
+  </html>`;
+}
+testArray = [{ name: "Dave", id: "50", email: "dave@example.com" }];
+function generateCards(array) {
+  for (var i = 0; i < array.length; i++) {
+    if (array[i].officeNumber) {
+      renderManagerCard(array[i]);
+    } else if (array[i].github) {
+      renderEngineerCard(array[i]);
+    } else if (array[i].school) {
+      renderInternCard(array[i]);
+    } else {
+      renderEmployeeCard(array[i]);
+    }
   }
 }
 
-//From the prompt a new iteration of employee will be created
-//Uses the data called from the other page
-//if(data.role === Employee){const teamMember1 = new Employee(data.name, data.id, data.email)}
-
-class Manager extends Employee {
-  constructor(name, id, email, officeNo) {
-    super(name, id, email);
-    this.officeNumber = officeNo;
-  }
-
-  getRole() {
-    return "Manager";
-  }
+function renderEmployeeCard(array) {
+  return `<div class="col">
+  <div class="card mb-3">
+    <div class="card-header text-white bg-primary">${array.name}: Employee</div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">${array.id}</li>
+        <li class="list-group-item">${array.email}</li>
+      </ul>
+    </div>
+  </div>
+</div>`;
 }
-
-class Engineer extends Employee {
-  constructor(name, id, email, github) {
-    super(name, id, email);
-    this.github = github;
-  }
-  getRole() {
-    return "Engineer";
-  }
-  getGithub() {
-    return this.github;
-  }
+function renderManagerCard(array) {
+  return `<div class="col">
+  <div class="card mb-3">
+    <div class="card-header text-white bg-primary">${array.name}: Manager</div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">${array.id}</li>
+        <li class="list-group-item">${array.email}</li>
+        <li class="list-group-item">${array.officeNumber}</li>
+      </ul>
+    </div>
+  </div>
+</div>`;
 }
-
-class Intern extends Employee {
-  constructor(name, id, email, school) {
-    super(name, id, email);
-    this.school = school;
-  }
-  getRole() {
-    return "Intern";
-  }
-  getSchool() {
-    return this.school;
-  }
+function renderEngineerCard(array) {
+  return `<div class="col">
+  <div class="card mb-3">
+    <div class="card-header text-white bg-primary">${array.name}: Engineer</div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">${array.id}</li>
+        <li class="list-group-item">${array.email}</li>
+        <li class="list-group-item">${array.github}</li>
+      </ul>
+    </div>
+  </div>
+</div>`;
 }
-
-function createNewObj(employ, data) {
-  if (employ === "Employee") {
-    new Employee(data.name, data.id, data.email);
-  }
+function renderInternCard(array) {
+  return `<div class="col">
+  <div class="card mb-3">
+    <div class="card-header text-white bg-primary">${array.name}: Intern</div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">${array.id}</li>
+        <li class="list-group-item">${array.email}</li>
+        <li class="list-group-item">${array.school}</li>
+      </ul>
+    </div>
+  </div>
+</div>`;
 }
-

@@ -1,16 +1,9 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const render = require("./objects.js");
 
 let employee = [];
-//connect to objects.js (export and require)
 
-//prompt for the questions
-//Create a function to write an html file.
-//for prompt, have a raw list of role types. Employee, Manager, Engineer and Intern
-
-//IDEA
-//Save prompt as a function
-//in the .then, run a2nd prompt, if they answer yes, then go back to the first promot
 let questions = [
   {
     type: "input",
@@ -80,7 +73,8 @@ function newEmployee(questions) {
             newEmployee(questions);
           } else {
             //Once it has stopped running, create a function that renders the info from the employee array.
-            return;
+            let finalRender = render.renderHtml(employee);
+            console.log(finalRender);
           }
         });
     });
