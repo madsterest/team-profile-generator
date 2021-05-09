@@ -1,6 +1,10 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const render = require("./objects.js");
+const render = require("./render.js");
+const Employee = require("./functions/employee.js");
+const Manager = require("./functions/manager.js");
+const Engineer = require("./functions/engineer.js");
+const Intern = require("./functions/intern.js");
 
 let employee = [];
 
@@ -82,66 +86,9 @@ function newEmployee(questions) {
     });
 }
 
-class Employee {
-  constructor(name, id, email) {
-    this.name = name;
-    this.id = id;
-    this.email = email;
-  }
-  getName() {
-    return this.name;
-  }
-  getId() {
-    return this.id;
-  }
-  getEmail() {
-    return this.email;
-  }
-  getRole() {
-    return "Employee";
-  }
-}
-
 //From the prompt a new iteration of employee will be created
 //Uses the data called from the other page
 //if(data.role === Employee){const teamMember1 = new Employee(data.name, data.id, data.email)}
-
-class Manager extends Employee {
-  constructor(name, id, email, officeNo) {
-    super(name, id, email);
-    this.officeNumber = officeNo;
-  }
-
-  getRole() {
-    return "Manager";
-  }
-}
-
-class Engineer extends Employee {
-  constructor(name, id, email, github) {
-    super(name, id, email);
-    this.github = github;
-  }
-  getRole() {
-    return "Engineer";
-  }
-  getGithub() {
-    return this.github;
-  }
-}
-
-class Intern extends Employee {
-  constructor(name, id, email, school) {
-    super(name, id, email);
-    this.school = school;
-  }
-  getRole() {
-    return "Intern";
-  }
-  getSchool() {
-    return this.school;
-  }
-}
 
 function createNewObj(data) {
   if (data.employType === "Employee") {

@@ -18,8 +18,8 @@ function renderHtml(array) {
           <span class="navbar-brand mb-0 h1">My Team</span>
         </div>
       </nav>
-      <div class="container-fluid">
-        <div class="row mx-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
+      <div class="container">
+        <div class="row justify-content-center mx-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
         ${generateCards(array)}
         </div>  
       </div>
