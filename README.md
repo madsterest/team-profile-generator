@@ -11,15 +11,10 @@
  # Table of Contents
  
  * [Installation](#installation)
- <br/>
  * [Useage](#useage)
- <br/>
  * [Contributing](#contributing)
- <br/>
  * [Tests](#tests)
- <br/>
  * [License](#license)
- <br/>
  * [Questions](#questions)
 
 
@@ -30,6 +25,16 @@
  # Useage
  The user will be asked a series of questions regarding their team members including Name, Id number, email, office number, github username, school and the employees Role. An html file will then be created conatining the users inputs.
  
+ Click the link below for a Demo of the application:
+ https://drive.google.com/file/d/1cG6CwTDfRJIkhEPeo3Y3hQoJR6XaVXRj/view
+ 
+ 
+ ![application demo](./application-demo.png)
+ 
+ 
+ ![Final Page](./rendered-page.png)
+ 
+
 
  # Contributing
  This app was created by Madeleine O'Dea.
@@ -40,8 +45,8 @@
  
 
  # License
-  Licensed under MIT.<br/>
-  For more information, visit this link.<br/>
+  Licensed under MIT.
+  For more information, visit this link.
   https://opensource.org/licenses/MIT
   
   
