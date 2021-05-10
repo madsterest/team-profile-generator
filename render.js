@@ -10,6 +10,7 @@ function renderHtml(array) {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
       />
+      <script src="https://kit.fontawesome.com/dcd16aee2a.js" crossorigin="anonymous"></script>
       <title>Document</title>
     </head>
     <body>
@@ -47,11 +48,11 @@ function renderEmployeeCard(array) {
   return `
         <div class="col">
         <div class="card mb-3">
-          <div class="card-header text-white bg-primary">${array.name} <br>Employee</div>
+          <div class="card-header text-white bg-primary">${array.name} <br><i class="fas fa-coffee"></i> Employee</div>
           <div class="card-body">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">${array.id}</li>
-              <li class="list-group-item"><a href="mailto: ${array.email}">${array.email}</a></li>
+              <li class="list-group-item">ID: ${array.id}</li>
+              <li class="list-group-item">Email: <a href="mailto: ${array.email}">${array.email}</a></li>
             </ul>
           </div>
         </div>
@@ -61,12 +62,12 @@ function renderManagerCard(array) {
   return `
         <div class="col">
         <div class="card mb-3">
-          <div class="card-header text-white bg-primary">${array.name}<br>Manager</div>
+          <div class="card-header text-white bg-primary">${array.name}<br><i class="fas fa-briefcase"></i> Manager</div>
           <div class="card-body">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">${array.id}</li>
-              <li class="list-group-item"><a href="mailto: ${array.email}">${array.email}</a></li>
-              <li class="list-group-item">${array.officeNumber}</li>
+              <li class="list-group-item">ID: ${array.id}</li>
+              <li class="list-group-item">Email: <a href="mailto: ${array.email}">${array.email}</a></li>
+              <li class="list-group-item">Office Number: ${array.officeNumber}</li>
             </ul>
           </div>
         </div>
@@ -76,12 +77,12 @@ function renderEngineerCard(array) {
   return `
         <div class="col">
         <div class="card mb-3">
-          <div class="card-header text-white bg-primary">${array.name}<br> Engineer</div>
+          <div class="card-header text-white bg-primary">${array.name}<br><i class="fas fa-glasses"></i> Engineer</div>
           <div class="card-body">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">${array.id}</li>
-              <li class="list-group-item"><a href="mailto: ${array.email}">${array.email}</a></li>
-              <li class="list-group-item"><a href="https://github.com/${array.github}">${array.github}</a></li>
+              <li class="list-group-item">ID: ${array.id}</li>
+              <li class="list-group-item">Email: <a href="mailto: ${array.email}">${array.email}</a></li>
+              <li class="list-group-item">GitHub: <a href="https://github.com/${array.github}">${array.github}</a></li>
             </ul>
           </div>
         </div>
@@ -92,12 +93,12 @@ function renderInternCard(array) {
   return `
         <div class="col">
         <div class="card mb-3">
-          <div class="card-header text-white bg-primary">${array.name}<br>Intern</div>
+          <div class="card-header text-white bg-primary">${array.name}<br><i class="fas fa-graduation-cap"></i> Intern</div>
           <div class="card-body">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">${array.id}</li>
-              <li class="list-group-item"><a href="mailto: ${array.email}">${array.email}</a></li>
-              <li class="list-group-item">${array.school}</li>
+              <li class="list-group-item">ID: ${array.id}</li>
+              <li class="list-group-item">Email: <a href="mailto: ${array.email}">${array.email}</a></li>
+              <li class="list-group-item">School: ${array.school}</li>
             </ul>
           </div>
         </div>
