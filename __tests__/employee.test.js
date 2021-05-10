@@ -1,4 +1,4 @@
-const Employee = require("../functions/employee.js");
+const Employee = require("../lib/employee.js");
 
 it("Can instantiate the Employee Instance", () => {
   const employee = new Employee();

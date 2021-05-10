@@ -1,13 +1,16 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+//Importing the functions/classes from other files
 const render = require("./render.js");
-const Employee = require("./functions/employee.js");
-const Manager = require("./functions/manager.js");
-const Engineer = require("./functions/engineer.js");
-const Intern = require("./functions/intern.js");
+const Employee = require("./lib/employee.js");
+const Manager = require("./lib/manager.js");
+const Engineer = require("./lib/engineer.js");
+const Intern = require("./lib/intern.js");
 
+//Created an empty array to store all the object instances once they are created through the inquirer prompts.
 let employee = [];
 
+//List of questions for the inquirer.propmt
 let questions = [
   {
     type: "input",
@@ -55,7 +58,8 @@ let questions = [
     },
   },
 ];
-
+//Inquirer.propmt that asks questions about the employees. Once the data is obtained, an object is created based on the inputs.
+//The 2nd Inquirer.prompt creates the loop. If they answer yes to add another employee, then the newEmployee function is accessed. Otherwise the employee array (which all the objects have been pushed to) will be used in the render functions.
 function newEmployee(questions) {
   inquirer
     .prompt(questions)
@@ -76,20 +80,17 @@ function newEmployee(questions) {
           if (data.anotherEmploy === "Yes") {
             newEmployee(questions);
           } else {
-            //Once it has stopped running, create a function that renders the info from the employee array.
             let finalRender = render.renderHtml(employee);
             fs.writeFile("index.html", finalRender, (err) => {
               if (err) return console.log(err);
             });
           }
         });
-    });
+    })
+    .catch((err) => console.log(err));
 }
 
-//From the prompt a new iteration of employee will be created
-//Uses the data called from the other page
-//if(data.role === Employee){const teamMember1 = new Employee(data.name, data.id, data.email)}
-
+//This function decides which class of object to create. The object is then pushed to the employee array.
 function createNewObj(data) {
   if (data.employType === "Employee") {
     employee.push(new Employee(data.name, data.id, data.email));

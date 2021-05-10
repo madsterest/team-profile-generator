@@ -1,5 +1,5 @@
-const Employee = require("../functions/employee.js");
-const Intern = require("../functions/intern.js");
+const Employee = require("../lib/employee.js");
+const Intern = require("../lib/intern.js");
 
 it("Can set school via constructor argument", () => {
   const employee = new Intern("John", 509, "john@gmail.com", "UTS");

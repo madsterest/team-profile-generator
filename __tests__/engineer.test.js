@@ -1,5 +1,5 @@
-const Employee = require("../functions/employee.js");
-const Engineer = require("../functions/engineer.js");
+const Employee = require("../lib/employee.js");
+const Engineer = require("../lib/engineer.js");
 
 it("Can set GitHub account via constructor argument", () => {
   const employee = new Engineer(

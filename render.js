@@ -1,5 +1,6 @@
 module.exports.renderHtml = renderHtml;
 
+//Function that renders the bulk of the html page inclouding link and script tags for bootstrap and font awesome. It triggers the generateCards function.
 function renderHtml(array) {
   return `<!DOCTYPE html>
   <html lang="en">
@@ -27,7 +28,10 @@ function renderHtml(array) {
     </body>
   </html>`;
 }
+//render is an empty array that will contain all the object cards once they are in a rendered html format.
 let render = [];
+//Loops through the employee array (from the index.html file, here labelled array) and loops through each index. Since the classes all contain different properties, it checkes whether a defining property is there and triggers the appropriate rendering function.
+//.join("") removes the commas from the array so it is one unit.
 function generateCards(array) {
   for (var i = 0; i < array.length; i++) {
     let object = array[i];
@@ -43,7 +47,7 @@ function generateCards(array) {
   }
   return render.join("");
 }
-
+//Uses mailto: to open the users selected mail browser.
 function renderEmployeeCard(array) {
   return `
         <div class="col">
@@ -82,7 +86,7 @@ function renderEngineerCard(array) {
             <ul class="list-group list-group-flush">
               <li class="list-group-item">ID: ${array.id}</li>
               <li class="list-group-item">Email: <a href="mailto: ${array.email}">${array.email}</a></li>
-              <li class="list-group-item">GitHub: <a href="https://github.com/${array.github}">${array.github}</a></li>
+              <li class="list-group-item">GitHub: <a href="https://github.com/${array.github}" target="_blank">${array.github}</a></li>
             </ul>
           </div>
         </div>
